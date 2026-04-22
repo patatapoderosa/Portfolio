@@ -1,0 +1,9 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static Vercel deployment wrapper for the mirrored portfolio site.",
+  "scripts": {
+    "build": "node scripts/build-vercel.mjs"
+  }
+}
