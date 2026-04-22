@@ -138,11 +138,15 @@
   }
 
   function initHeroScrollReveal() {
+    var isMobileViewport = (window.innerWidth || 0) < 1024;
     var revealGroups = Array.prototype.slice.call(
       document.querySelectorAll("[data-hero-reveal]")
     );
     if (!revealGroups.length) return;
     revealGroups.forEach(function (group) {
+      if (isMobileViewport && group.closest(".hero-copy-mobile")) {
+        return;
+      }
       Array.prototype.forEach.call(
         group.querySelectorAll("[data-hero-line]"),
         function (line) {

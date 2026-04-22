@@ -309,14 +309,15 @@ body.page-transition-enter-active .page-transition-overlay::after {
 
   .home-page main > section:first-of-type > div {
     padding-top: 7rem !important;
-    padding-bottom: 1.25rem !important;
+    padding-bottom: 0.4rem !important;
     justify-content: flex-start !important;
-    gap: 0.875rem !important;
+    gap: 0.55rem !important;
   }
 
   .hero-copy-mobile {
     display: flex !important;
-    gap: 12px;
+    flex-direction: column-reverse;
+    gap: 10px;
     justify-content: flex-start;
   }
 
@@ -329,12 +330,16 @@ body.page-transition-enter-active .page-transition-overlay::after {
     letter-spacing: -0.05em;
   }
 
+  .hero-below-video-mobile {
+    display: none !important;
+  }
+
   .hero-below-video-mobile .hero-main {
     display: none !important;
   }
 
   #about {
-    padding-top: 1.5rem !important;
+    padding-top: 0.35rem !important;
   }
 
   .menu-socials {
