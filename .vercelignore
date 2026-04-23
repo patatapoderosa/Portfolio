@@ -1,8 +1,11 @@
 .git
 .playwright-cli
 editable-site
+mirror
 mirror_server.log
 serve_editable.py
 serve_mirror.py
 tests
 dist
+.next
+node_modules

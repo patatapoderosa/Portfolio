@@ -2,8 +2,22 @@
   "name": "portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "Static Vercel deployment wrapper for the mirrored portfolio site.",
+  "description": "Next.js rebuild of the edited Carmine Carnevale portfolio.",
   "scripts": {
-    "build": "node scripts/build-vercel.mjs"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "^5.7.2"
   }
 }
