@@ -55,14 +55,18 @@ function staticImageForReference(reference) {
       : sourceUrl && sourceUrl.startsWith("/")
         ? encodeURIComponent(sourceUrl)
         : sourceUrl;
-  const normalizedReference =
-    normalizedImageUrl && width && quality
-      ? `_next/image?url=${normalizedImageUrl}&w=${width}&q=${quality}`
-      : decodedReference;
+  const preferredWidths = normalizedImageUrl && width && quality
+    ? ["1200", "1080", "828", "1920", "2048", "750", "640", width, "3840"]
+    : [];
+  const normalizedReferences = preferredWidths.map(
+    (candidateWidth) => `_next/image?url=${normalizedImageUrl}&w=${candidateWidth}&q=${quality}`
+  );
+  const normalizedReference = normalizedReferences[0] || decodedReference;
   const sourceImage = [
+    ...normalizedReferences,
     percentNormalizedReference,
     percentNormalizedReference.replace("%3F", "?"),
-    normalizedReference
+    decodedReference
   ]
     .map((candidate) => resolve(sourceDir, candidate))
     .find((candidate) => existsSync(candidate) && statSync(candidate).isFile());
@@ -90,6 +94,14 @@ for (const htmlFile of walkFiles(distDir).filter((file) => file.endsWith(".html"
     writeFileSync(htmlFile, rewritten);
   }
 }
+
+for (const nextFile of readdirSync(resolve(distDir, "_next"), { withFileTypes: true })) {
+  if (nextFile.isFile() && nextFile.name.startsWith("image?")) {
+    rmSync(resolve(distDir, "_next", nextFile.name), { force: true });
+  }
+}
+
+rmSync(resolve(distDir, "videos", "lab"), { recursive: true, force: true });
 
 const requiredFiles = [
   "index.html",

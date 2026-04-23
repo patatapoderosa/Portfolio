@@ -6,6 +6,13 @@ body {
   transition: opacity 260ms ease, transform 260ms ease;
 }
 
+.loading-screen {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 header {
   display: none !important;
   visibility: hidden !important;
