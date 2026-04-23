@@ -251,7 +251,19 @@
       if (!isInternalLink(anchor)) return;
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
-      var destination = anchor.href;
+      var destinationUrl = new URL(anchor.href);
+      if (destinationUrl.origin === origin) {
+        if (destinationUrl.pathname === "/work") {
+          destinationUrl.pathname = "/work.html";
+        } else if (
+          destinationUrl.pathname.indexOf("/work/") === 0 &&
+          !destinationUrl.pathname.endsWith(".html")
+        ) {
+          destinationUrl.pathname = destinationUrl.pathname + ".html";
+        }
+      }
+
+      var destination = destinationUrl.href;
       if (destination === window.location.href) return;
 
       event.preventDefault();
