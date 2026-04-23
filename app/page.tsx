@@ -24,6 +24,14 @@ export default function HomePage() {
               className="home-work-preview__card"
               style={{ backgroundColor: item.accent }}
             >
+              <video
+                src={item.previewVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="home-work-preview__card-video"
+              />
               <div className="home-work-preview__card-inner">
                 <p>{item.year}</p>
                 <h2>{item.title}</h2>
