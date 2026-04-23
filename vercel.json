@@ -11,6 +11,10 @@
   ],
   "rewrites": [
     {
+      "source": "/_next/image",
+      "destination": "/api/next-image"
+    },
+    {
       "source": "/work",
       "destination": "/work.html"
     },

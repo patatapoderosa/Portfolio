@@ -4,6 +4,12 @@
 
   var TRANSITION_KEY = "mirror-page-transition";
   var DURATION_MS = 520;
+  var isInternalTransition = sessionStorage.getItem(TRANSITION_KEY) === "pending";
+
+  if (isInternalTransition) {
+    body.classList.add("skip-loading-screen");
+  }
+
   var overlay = document.createElement("div");
   overlay.className = "page-transition-overlay";
   body.appendChild(overlay);
